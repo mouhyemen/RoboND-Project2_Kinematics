@@ -87,10 +87,13 @@ def H_transform(alpha, a, d, theta):
 ```
 
 For calculating the homogeneous transform between the `gripper_link` and `base_ink`, an extrinsic body fixed rotations are performed. The sequence of operations involve performing a roll along x-axis, pitch along y-axis, and yaw along z-axis. For extrinsic rotations, we pre-multiply the sequence of operations like this:
+
 `R0_EE = Rot(Z, yaw) * Rot(Y, pitch) * Rot(X, roll)`
 
 To align the URDF model of the robot with the DH parameters, we apply a transformation to the gripper by rotating first along the z-axis by 180, and then rotating about the y-axis by -90 degrees.
+
 `R_corr = Rot(Z, 180) * Rot(Y, -90)`
+
 Hence, `R0G = R0_EE * R_corr`.
 
 The following code is used for performing extrinsic rotations linking the `gripper_link` and `base_link` as well as performing a correctional transform to the rotation matrix.
@@ -125,22 +128,24 @@ R_corr  = r_zyx(0, -pi/2, pi)
 R0_EE   = R0_EE*R_corr
 ```
 
-##3. Inverse Kinematics Analysis
+## 3. Inverse Kinematics Analysis
 We use inverse kinematics to find the joint angles of a robotic arm in a frame of reference given the pose of the end-effector.
 
-The Kuka Arm has a total of 6 joints where every joint is revolute. `Joints 4, 5, 6` form the spherical wrist of the arm with `Joint 5` being the wrist center.
+The Kuka Arm has a total of 6 joints where every joint is revolute. `Joints 4, 5, 6` form the spherical wrist of the arm with `Joint 5` being the wrist center. For performing inverse kinematics, we decouple the system into 2 parts. 
 
-For performing inverse kinematics, we decouple the system into 2 parts. The first part consists of `Joints 1, 2, 3` which are responsible for determining the position of the wrist center also called *Inverse Position*. The second part consists of `Joints 4, 5, 6` which are responsible for determining the orientation of the wrist center also called *Inverse Orientation*.
+The first part consists of `Joints 1, 2, 3` which are responsible for determining the position of the wrist center also called *Inverse Position*. 
 
-###3.1 Inverse Position - Finding Wrist Center Position, θ1, θ2, θ3
+The second part consists of `Joints 4, 5, 6` which are responsible for determining the orientation of the wrist center also called *Inverse Orientation*.
+
+### 3.1 Inverse Position
 We first find the wrist center's position which is marked by the red vector in the diagram below. The green vector represents the end-effector's position from the ground frame relative to the ground frame. The black vector represents the end-effector's position in the wrist-center's frame relative to the ground frame. 
 
 ![wc_figure](/images/wc_figure.png)
+![wrist_center](/images/wrist_center.png)
 
 By doing a simple vector subtraction, we can find the wrist-center's location in the ground frame relative to the ground frame. We use the following equation to find the wrist center's position. The corresponding vector's mathematical representation is color coded.
 
-![wrist_center](/images/wrist_center.png)
-
+#### 3.1.1 - Finding cartesian distances between joints
 Before finding all the angles, first let us find all the cartesian distances between `Joint 2`, `Joint 3`, and `Wrist Center`. We are interested in `a, b, c`. Parameters used for deriving a particular side has been color-coded.
 `a = a2` (just the link length between joints 2 and 3)
 
@@ -154,6 +159,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 
 ![distances](/images/distances.png)
 
+#### 3.1.2 - Finding angles θ1, θ2, θ3
 * θ1: For finding θ1, we project the vector going from the `base_link` to the end-effector (or `gripper_link`) onto the `XY-plane` and apply an inverse tangent operation. The following diagram shows how θ1 is derived where `θ1 = atan2(wy, wx)`.
 
 ![theta1](/images/theta1.png)
@@ -182,7 +188,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	
 ![theta1](/images/theta3.png)
 
-###3.2 Inverse Orientation - Finding θ4, θ5, θ6
+### 3.2 Inverse Orientation - Finding angles θ4, θ5, θ6
 For the inverse orientation problem, we will decompose the rotation transform from the `gripper_link` to the `base_link` as such:
 `R0G = R03 * R36 * R6G` 
 `R03.inverse * R0G = R03.inverse * R03 * R36 * I` (since the 6th frame and gripper frame have same orientation)
@@ -198,7 +204,10 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
-![inverse_orient](/images/inverse_orient.png)
+<p align="center">
+  <img width="460" height="300" src=![inverse_orient](/images/inverse_orient.png)>
+</p>
+
 
 * θ4: For finding θ4, we look at elements r13 and r33. 
 	`θ4 = atan2(r33, -r13)`
