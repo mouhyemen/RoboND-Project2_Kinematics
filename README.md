@@ -176,7 +176,7 @@ where `cx = r_wc - a1` and `cz = wz - d1`
 and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 
 <p align="center">
-  <img height="250" src="/images/distances.png">
+  <img height="350" src="/images/distances.png">
 </p>
 
 #### 3.1.2 - Finding angles θ1, θ2, θ3
@@ -197,7 +197,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`δ = atan2(cz, cx)` (color coded in blue)
 	
 <p align="center">
-  <img width="500" src="/images/theta2.png">
+  <img width="600" src="/images/theta2.png">
 </p>
 
 * θ3: For finding θ3, we use law of cosines for finding angle γ (color coded in red) and inverse tangent function for finding angle	α (color coded in blue). The following diagram shows how θ3 is derived where `θ3 = - (γ - α)`.
@@ -211,7 +211,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`α = atan2(d4, a3)` (color coded in blue)
 	
 <p align="center">
-  <img width="500" src="/images/theta3.png">
+  <img width="600" src="/images/theta3.png">
 </p>
 	
 ### 3.2 Inverse Orientation - Finding angles θ4, θ5, θ6
