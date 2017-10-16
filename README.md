@@ -40,7 +40,7 @@ Link length | a(i-1) 	| Distance from z(i-1) to z(i) along x(i-1)
 Twist angle | α(i-1)	| Angle between z(i-1) and z(i) about x(i-1)
 
 <p align="center">
-  <img height="400" src="/images/gripper_frame.png">
+  <img height="300" src="/images/gripper_frame.png">
 </p>
 
 The set of derived DH parameters are shown below.
@@ -176,7 +176,7 @@ where `cx = r_wc - a1` and `cz = wz - d1`
 and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 
 <p align="center">
-  <img height="350" src="/images/distances.png">
+  <img height="300" src="/images/distances.png">
 </p>
 
 #### 3.1.2 - Finding angles θ1, θ2, θ3
