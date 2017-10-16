@@ -46,6 +46,7 @@ Twist angle | α(i-1)	| Angle between z(i-1) and z(i) about x(i-1)
 The set of derived DH parameters are shown below.
 
 <center>
+	
 Links 	| θ(i) 	| d(i) 	| a(i-1) | α(i-1) 
 --- 	| --- 		| --- 	| --- 	 | ---
 0->1 	| q1* 		| d1	| 0 	|  0
@@ -55,6 +56,7 @@ Links 	| θ(i) 	| d(i) 	| a(i-1) | α(i-1)
 4->5 	| q5* 		| 0 	| 0 	|  90
 5->6 	| q7* 		| 0 	| 0 	| -90
 6->EE 	| qG* 		| dG 	| 0 	| 0
+
 </center>
 
 Every joint in the Kuka arm are revolute joints and determine the angular rotation for the *i-th joint* - hence marked by qi*. Between `Joint 2` and `Joint 3`, there is an offset of 90 degrees which needs to be accounted for.
