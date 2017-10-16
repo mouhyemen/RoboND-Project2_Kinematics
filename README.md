@@ -18,11 +18,10 @@ The goal of the project is to calculate the joint angles given the end-effector'
 ### 1.2 Outcomes:
 * Calculated all joint angles (with optimized IK)
 * Grasped and placed 6 objects in the bin
-* YouTube link:
+* Click on the image below to view the demo on YouTube.
 
 <p align="center">
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=https://www.youtube.com/watch?v=1BXRThDDH1Q
-" target="_blank">
+  <a href="https://www.youtube.com/watch?v=1BXRThDDH1Q" target="_blank">
   <img height="300" src="/images/pick_place.png" border="10">
 </a>
 </p>
