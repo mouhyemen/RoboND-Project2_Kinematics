@@ -7,7 +7,7 @@
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
 
 <p align="center">
-  <src="/images/kuka_arm.png">
+  ![kuka_arm](/images/kuka_arm.png)
 </p>
 	
 ### 1.1 Objectives:
