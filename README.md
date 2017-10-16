@@ -52,6 +52,9 @@ Links 	| θ(i) 	| d(i) 	| a(i-1) | α(i-1)
 Every joint in the Kuka arm are revolute joints and determine the angular rotation for the *i-th joint* - hence marked by qi*. Between `Joint 2` and `Joint 3`, there is an offset of 90 degrees which needs to be accounted for.
 
 The values for the link offsets and link lengths are:
+`d1 = 0.75      a1 = 0.35`
+`d4 = 1.50      a2 = 1.25`
+`dG = 0.303     a3 = -0.054`
 
 ### 2.2 Homogeneous Transformation Matrix
 The homogeneous transform is a 4x4 matrix that contains information of the orientation and position of a frame in another reference frame. 
@@ -88,7 +91,7 @@ For calculating the homogeneous transform between the `gripper_link` and `base_i
 
 To align the URDF model of the robot with the DH parameters, we apply a transformation to the gripper by rotating first along the z-axis by 180, and then rotating about the y-axis by -90 degrees.
 `R_corr = Rot(Z, 180) * Rot(Y, -90)`
-Hence, `R0G = R0_EE * R_corr`
+Hence, `R0G = R0_EE * R_corr`.
 
 The following code is used for performing extrinsic rotations linking the `gripper_link` and `base_link` as well as performing a correctional transform to the rotation matrix.
 
