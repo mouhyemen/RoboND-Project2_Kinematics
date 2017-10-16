@@ -40,7 +40,7 @@ Link length | a(i-1) 	| Distance from z(i-1) to z(i) along x(i-1)
 Twist angle | α(i-1)	| Angle between z(i-1) and z(i) about x(i-1)
 
 <p align="center">
-  <img height="300" src="/images/gripper_frame.png">
+  <img height="350" src="/images/gripper_frame.png">
 </p>
 
 The set of derived DH parameters are shown below.
@@ -231,7 +231,7 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
 <p align="center">
-  <img src="/images/inverse_orient.png">
+  <img width="500" src="/images/inverse_orient.png">
 </p>
 
 
