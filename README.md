@@ -205,7 +205,7 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
 <p align="center">
-  <img width="460" height="300" src=![inverse_orient](/images/inverse_orient.png)>
+  <img width="460" height="300" src="/images/inverse_orient.png">
 </p>
 
 
