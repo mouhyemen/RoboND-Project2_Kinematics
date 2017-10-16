@@ -21,7 +21,10 @@ The goal of the project is to calculate the joint angles given the end-effector'
 * YouTube link:
 
 <p align="center">
-  <img height="300" src="/images/pick_place.png">
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=https://www.youtube.com/watch?v=1BXRThDDH1Q
+" target="_blank">
+  <img height="300" src="/images/pick_place.png" border="10">
+</a>
 </p>
 
 ## 2. Forward Kinematics Analysis
