@@ -7,7 +7,7 @@
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
 
 <p align="center">
-  ![kuka_arm](/images/kuka_arm.png)
+  <img src="/images/kuka_arm.png">
 </p>
 	
 ### 1.1 Objectives:
@@ -21,7 +21,7 @@ The goal of the project is to calculate the joint angles given the end-effector'
 * YouTube link:
 
 <p align="center">
-  <src="/images/pick_place.png">
+  <img src="/images/pick_place.png">
 </p>
 
 ## 2. Forward Kinematics Analysis
@@ -40,7 +40,7 @@ Link length | a(i-1) 	| Distance from z(i-1) to z(i) along x(i-1)
 Twist angle | α(i-1)	| Angle between z(i-1) and z(i) about x(i-1)
 
 <p align="center">
-  <src="/images/gripper_frame.png">
+  <img src="/images/gripper_frame.png">
 </p>
 
 The set of derived DH parameters are shown below.
@@ -78,7 +78,7 @@ The transform for each individual joint is shown below.
 The equation for calculating a homogeneous transform between two reference frames and its resultant output is shown below
 
 <p align="center">
-  <src="/images/h_transform.png">
+  <img src="/images/h_transform.png">
 </p>
 
 The following code is used for generating the homogeneous transform for a set of DH parameters.
@@ -153,7 +153,7 @@ The second part consists of `Joints 4, 5, 6` which are responsible for determini
 We first find the wrist center's position which is marked by the red vector in the diagram below. The green vector represents the end-effector's position from the ground frame relative to the ground frame. The black vector represents the end-effector's position in the wrist-center's frame relative to the ground frame. 
 
 <p align="center">
-  <src="/images/wc_figure.png">
+  <img src="/images/wc_figure.png">
 </p>
 <p align="center">
   <img height="150" src="/images/wrist_center.png">
@@ -209,7 +209,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`α = atan2(d4, a3)` (color coded in blue)
 	
 <p align="center">
-  <src="/images/theta3.png">
+  <img src="/images/theta3.png">
 </p>
 	
 ### 3.2 Inverse Orientation - Finding angles θ4, θ5, θ6
@@ -229,7 +229,7 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
 <p align="center">
-  <src="/images/inverse_orient.png">
+  <img src="/images/inverse_orient.png">
 </p>
 
 
