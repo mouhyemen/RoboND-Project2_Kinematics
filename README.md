@@ -281,6 +281,11 @@ Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 	`θ6 = atan2(-r22, r21)`
 
 ```python
+	# Finding rotational components from 6th to 3rd frame
+	r33, r13 = R3_6[2,2], R3_6[0,2]
+	r23      = R3_6[1,2]
+	r22, r21 = R3_6[1,1], R3_6[1,0]
+	  
 	# Finding values of theta4, 5, and 6
 	theta4 = atan2(r33, -r13)
 	theta4 = theta4.evalf()
