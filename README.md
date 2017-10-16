@@ -45,8 +45,6 @@ Twist angle | α(i-1)	| Angle between z(i-1) and z(i) about x(i-1)
 
 The set of derived DH parameters are shown below.
 
-<center>
-	
 Links 	| θ(i) 	| d(i) 	| a(i-1) | α(i-1) 
 --- 	| --- 		| --- 	| --- 	 | ---
 0->1 	| q1* 		| d1	| 0 	|  0
@@ -56,8 +54,6 @@ Links 	| θ(i) 	| d(i) 	| a(i-1) | α(i-1)
 4->5 	| q5* 		| 0 	| 0 	|  90
 5->6 	| q7* 		| 0 	| 0 	| -90
 6->EE 	| qG* 		| dG 	| 0 	| 0
-
-</center>
 
 Every joint in the Kuka arm are revolute joints and determine the angular rotation for the *i-th joint* - hence marked by qi*. Between `Joint 2` and `Joint 3`, there is an offset of 90 degrees which needs to be accounted for.
 
@@ -174,13 +170,13 @@ By doing a simple vector subtraction, we can find the wrist-center's location in
 Before finding all the angles, first let us find all the cartesian distances between `Joint 2`, `Joint 3`, and `Wrist Center`. We are interested in `a, b, c`. Parameters used for deriving a particular side has been color-coded.
 `a = a2` (just the link length between joints 2 and 3)
 
-`b = sqrt(a3 * a3 + d4 * d4)` (color coded in green)
+`b = sqrt(a3 * a3 + d4 * d4)` *(color coded in green)*
 
-`c = sqrt(cx * cx + cz * cz)` (color coded in red)
+`c = sqrt(cx * cx + cz * cz)` *(color coded in red)*
 
 where `cx = r_wc - a1` and `cz = wz - d1` 
 
-and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
+and `r_wc = sqrt(wx * wx + wy * wy)` *(color coded in blue)*
 
 <p align="center">
   <img height="300" src="/images/distances.png">
@@ -206,9 +202,9 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 
 	`sinβ = sqrt(1 - cosβ*cosβ)`
 
-	`β = atan2(sinβ, cosβ)` (color coded in red)
+	`β = atan2(sinβ, cosβ)` *(color coded in red)*
 
-	`δ = atan2(cz, cx)` (color coded in blue)
+	`δ = atan2(cz, cx)` *(color coded in blue)*
 	
 <p align="center">
   <img width="600" src="/images/theta2.png">
@@ -249,8 +245,8 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 ### 3.2 Inverse Orientation - Finding angles θ4, θ5, θ6
 For the inverse orientation problem, we will decompose the rotation transform from the `gripper_link` to the `base_link` as such:
 `R0G = R03 * R36 * R6G` 
-`R03.inverse * R0G = R03.inverse * R03 * R36 * I` (since the 6th frame and gripper frame have same orientation)
-`R36 = R03' * R0G` (since rotation matrix' inverse is its transpose)
+`R03.inverse * R0G = R03.inverse * R03 * R36 * I` *(since the 6th frame and gripper frame have same orientation)*
+`R36 = R03' * R0G` *(since rotation matrix' inverse is its transpose)*
 
 We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 
