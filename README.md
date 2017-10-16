@@ -21,7 +21,7 @@ The goal of the project is to calculate the joint angles given the end-effector'
 * YouTube link:
 
 <p align="center">
-  <img height="400" src="/images/pick_place.png">
+  <img height="300" src="/images/pick_place.png">
 </p>
 
 ## 2. Forward Kinematics Analysis
@@ -74,7 +74,7 @@ The homogeneous transform is a 4x4 matrix that contains information of the orien
 The transform for each individual joint is shown below.
 
 <p align="center">
-  <img height="350" src="/images/joint_transforms.png">
+  <img height="275" src="/images/joint_transforms.png">
 </p>
 	
 The equation for calculating a homogeneous transform between two reference frames and its resultant output is shown below
@@ -155,7 +155,7 @@ The second part consists of `Joints 4, 5, 6` which are responsible for determini
 We first find the wrist center's position which is marked by the red vector in the diagram below. The green vector represents the end-effector's position from the ground frame relative to the ground frame. The black vector represents the end-effector's position in the wrist-center's frame relative to the ground frame. 
 
 <p align="center">
-  <img height="400" src="/images/wc_figure.png">
+  <img height="300" src="/images/wc_figure.png">
 </p>
 <p align="center">
   <img height="120" src="/images/wrist_center.png">
@@ -176,7 +176,7 @@ where `cx = r_wc - a1` and `cz = wz - d1`
 and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 
 <p align="center">
-  <img height="300" src="/images/distances.png">
+  <img height="250" src="/images/distances.png">
 </p>
 
 #### 3.1.2 - Finding angles θ1, θ2, θ3
@@ -197,7 +197,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`δ = atan2(cz, cx)` (color coded in blue)
 	
 <p align="center">
-  <img src="/images/theta2.png">
+  <img width="500" src="/images/theta2.png">
 </p>
 
 * θ3: For finding θ3, we use law of cosines for finding angle γ (color coded in red) and inverse tangent function for finding angle	α (color coded in blue). The following diagram shows how θ3 is derived where `θ3 = - (γ - α)`.
@@ -211,7 +211,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`α = atan2(d4, a3)` (color coded in blue)
 	
 <p align="center">
-  <img src="/images/theta3.png">
+  <img width="500" src="/images/theta3.png">
 </p>
 	
 ### 3.2 Inverse Orientation - Finding angles θ4, θ5, θ6
