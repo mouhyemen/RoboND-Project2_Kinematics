@@ -5,6 +5,7 @@
 
 ## 1. Project Summary
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
+
 ![kuka_arm](/images/kuka_arm.png)
 
 ### 1.1 Objectives:
@@ -54,9 +55,11 @@ The values for the link offsets and link lengths are:
 
 ### 2.2 Homogeneous Transformation Matrix
 The homogeneous transform is a 4x4 matrix that contains information of the orientation and position of a frame in another reference frame. 
+
 ![transform](/images/transform.png)
 
 The transform for each individual joint is shown below.
+
 ![joint_transforms](/images/joint_transforms.png)
 
 The equation for calculating a homogeneous transform between two reference frames and its resultant output is shown below
@@ -78,7 +81,7 @@ def H_transform(alpha, a, d, theta):
     [  0  ,     0,    0,     1  ] 
     ])
   return A
-
+```
 
 For calculating the homogeneous transform between the `gripper_link` and `base_ink`, an extrinsic body fixed rotations are performed. The sequence of operations involve performing a roll along x-axis, pitch along y-axis, and yaw along z-axis. For extrinsic rotations, we pre-multiply the sequence of operations like this:
 `R0_EE = Rot(Z, yaw) * Rot(Y, pitch) * Rot(X, roll)`
@@ -111,13 +114,13 @@ def r_zyx(roll, pitch, yaw):
 	  ])
 
 	return R_z*R_y*R_x
-
 # Create rotation transform from end-effector as seen from ground frame
 R0_EE   = r_zyx(roll, pitch, yaw)
 
 # Align EE from URDF to DH convention by multiplying with correction-matrix
 R_corr  = r_zyx(0, -pi/2, pi)
 R0_EE   = R0_EE*R_corr
+```
 
 ##3. Inverse Kinematics Analysis
 We use inverse kinematics to find the joint angles of a robotic arm in a frame of reference given the pose of the end-effector.
@@ -128,9 +131,11 @@ For performing inverse kinematics, we decouple the system into 2 parts. The firs
 
 ###3.1 Inverse Position - Finding Wrist Center Position, θ1, θ2, θ3
 We first find the wrist center's position which is marked by the red vector in the diagram below. The green vector represents the end-effector's position from the ground frame relative to the ground frame. The black vector represents the end-effector's position in the wrist-center's frame relative to the ground frame. 
+
 ![wc_figure](/images/wc_figure.png)
 
 By doing a simple vector subtraction, we can find the wrist-center's location in the ground frame relative to the ground frame. We use the following equation to find the wrist center's position. The corresponding vector's mathematical representation is color coded.
+
 ![wrist_center](/images/wrist_center.png)
 
 Before finding all the angles, first let us find all the cartesian distances between `Joint 2`, `Joint 3`, and `Wrist Center`. We are interested in `a, b, c`. Parameters used for deriving a particular side has been color-coded.
@@ -143,9 +148,11 @@ Before finding all the angles, first let us find all the cartesian distances bet
 where `cx = r_wc - a1` and `cz = wz - d1` 
 
 and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
+
 ![distances](/images/distances.png)
 
 * θ1: For finding θ1, we project the vector going from the `base_link` to the end-effector (or `gripper_link`) onto the `XY-plane` and apply an inverse tangent operation. The following diagram shows how θ1 is derived where `θ1 = atan2(wy, wx)`.
+
 ![theta1](/images/theta1.png)
 
 * θ2: For finding θ2, we use law of cosines for finding angle β (color coded in red) and inverse tangent function for finding angle δ (color coded in blue). The following diagram shows how θ2 is derived where `θ2 = 90 - β - δ`.
@@ -157,6 +164,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`β = atan2(sinβ, cosβ)` (color coded in red)
 
 	`δ = atan2(cz, cx)` (color coded in blue)
+	
 ![theta1](/images/theta2.png)
 
 * θ3: For finding θ3, we use law of cosines for finding angle γ (color coded in red) and inverse tangent function for finding angle	α (color coded in blue). The following diagram shows how θ3 is derived where `θ3 = - (γ - α)`.
@@ -168,6 +176,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` (color coded in blue)
 	`γ = atan2(sinγ, cosγ)` (color coded in red)
 
 	`α = atan2(d4, a3)` (color coded in blue)
+	
 ![theta1](/images/theta3.png)
 
 ###3.2 Inverse Orientation - Finding θ4, θ5, θ6
@@ -185,6 +194,7 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 `R0G = R0_EE * R_corr`
 
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
+
 ![inverse_orient](/images/inverse_orient.png)
 
 * θ4: For finding θ4, we look at elements r13 and r33. 
