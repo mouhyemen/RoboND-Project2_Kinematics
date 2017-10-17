@@ -5,7 +5,7 @@
 ## 1. Project Summary
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
 
-![kuka_arm](./images/kuka_arm.png)
+![kuka_arm](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/kuka_arm.png)
 	
 ### 1.1 Objectives:
 * Calculate joint angles - θ1, θ2, θ3, θ4, θ5, θ6
@@ -17,7 +17,7 @@ The goal of the project is to calculate the joint angles given the end-effector'
 * Grasped and placed 6 objects in the bin
 * Click on the image below to view the demo on YouTube. (<https://www.youtube.com/watch?v=1BXRThDDH1Q>)
 
-![pick_place](./images/pick_place.png)
+![pick_place](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/pick_place.png)
 
 
 ## 2. Forward Kinematics Analysis
