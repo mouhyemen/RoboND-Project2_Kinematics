@@ -166,13 +166,13 @@ By doing a simple vector subtraction, we can find the wrist-center's location in
 Before finding all the angles, first let us find all the cartesian distances between `Joint 2`, `Joint 3`, and `Wrist Center`. We are interested in `a, b, c`. Parameters used for deriving a particular side has been color-coded.
 `a = a2` (just the link length between joints 2 and 3)
 
-`b = sqrt(a3 * a3 + d4 * d4)` *(color coded in green)*
+`b = √(a3 * a3 + d4 * d4)` *(color coded in green)*
 
-`c = sqrt(cx * cx + cz * cz)` *(color coded in red)*
+`c = √(cx * cx + cz * cz)` *(color coded in red)*
 
 where `cx = r_wc - a1` and `cz = wz - d1` 
 
-and `r_wc = sqrt(wx * wx + wy * wy)` *(color coded in blue)*
+and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
 ![distances](./images/distances.png)
 
@@ -192,7 +192,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` *(color coded in blue)*
 
 	`cosβ = (a*a + c*c - b*b) / (2 * a * c)`
 
-	`sinβ = sqrt(1 - cosβ*cosβ)`
+	`sinβ = √(1 - cosβ*cosβ)`
 
 	`β = atan2(sinβ, cosβ)` *(color coded in red)*
 
@@ -205,7 +205,7 @@ and `r_wc = sqrt(wx * wx + wy * wy)` *(color coded in blue)*
 
 	`cosγ = (a*a + c*c - b*b) / (2 * a * c)`
 
-	`sinγ = sqrt(1 - cosγ*cosγ)`
+	`sinγ = √(1 - cosγ*cosγ)`
 
 	`γ = atan2(sinγ, cosγ)` (color coded in red)
 
@@ -264,7 +264,7 @@ Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
 * θ5: For finding θ5, we look at elements r23. 
 	
-	`θ5 = atan2(sqrt(1 - r23*r23), r23)`
+	`θ5 = atan2(√(1 - r23*r23), r23)`
 
 * θ6: For finding θ6, we look at elements r21 and r22. 
 	
@@ -280,7 +280,7 @@ Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 	theta4 = atan2(r33, -r13)
 	theta4 = theta4.evalf()
 
-	theta5 = atan2(sqrt(1-r23*r23), r23)
+	theta5 = atan2(√(1-r23*r23), r23)
 	theta5 = theta5.evalf()
 
 	theta6 = atan2(-r22, r21)
