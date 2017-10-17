@@ -5,7 +5,7 @@
 ## 1. Project Summary
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
 
-![kuka_arm](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/kuka_arm.png)
+![kuka_arm](./images/kuka_arm.png)
 
 ### 1.1 Objectives:
 * Calculate joint angles - θ1, θ2, θ3, θ4, θ5, θ6
@@ -16,8 +16,6 @@ The goal of the project is to calculate the joint angles given the end-effector'
 * Calculated all joint angles (with optimized IK)
 * Grasped and placed 6 objects in the bin
 * Click on the image below to view the demo on YouTube. (<https://www.youtube.com/watch?v=1BXRThDDH1Q>)
-
-![pick_place](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/pick_place.png)
 
 
 ## 2. Forward Kinematics Analysis
@@ -36,7 +34,7 @@ Link length | a(i-1)  | Distance from z(i-1) to z(i) along x(i-1)
 Twist angle | α(i-1)  | Angle between z(i-1) and z(i) about x(i-1)
 
 
-![gripper_frame](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/gripper_frame.png)
+![gripper_frame](./images/gripper_frame.png)
 
 The set of derived DH parameters are shown below.
 
@@ -59,19 +57,19 @@ The values for the link offsets and link lengths are:
 The homogeneous transform is a 4x4 matrix that contains information of the orientation and position of a frame in another reference frame.
 
 
-![transform](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/transform.png)
+![transform](./images/transform.png)
 
 
 The transform for each individual joint is shown below.
 
 
-![joint_transforms](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/joint_transforms.png)
+![joint_transforms](./images/joint_transforms.png)
 
 
 The equation for calculating a homogeneous transform between two reference frames and its resultant output is shown below
 
 
-![h_transform](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/h_transform.png)
+![h_transform](./images/h_transform.png)
 
 
 The following code is used for generating the homogeneous transform for a set of DH parameters.
@@ -146,10 +144,10 @@ The second part consists of `Joints 4, 5, 6` which are responsible for determini
 We first find the wrist center's position which is marked by the red vector in the diagram below. The green vector represents the end-effector's position from the ground frame relative to the ground frame. The black vector represents the end-effector's position in the wrist-center's frame relative to the ground frame.
 
 
-![wc_figure](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/wc_figure.png)
+![wc_figure](./images/wc_figure.png)
 
 
-![wrist_center](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/wrist_center.png)
+![wrist_center](./images/wrist_center.png)
 
 
 By doing a simple vector subtraction, we can find the wrist-center's location in the ground frame relative to the ground frame. We use the following equation to find the wrist center's position. The corresponding vector's mathematical representation is color coded.
@@ -173,7 +171,7 @@ where `cx = r_wc - a1` and `cz = wz - d1`
 
 and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
-![distances](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/distances.png)
+![distances](./images/distances.png)
 
 ```python
   # Finding cartesian distances b/w joints 2, 3, and WC
@@ -185,7 +183,7 @@ and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 #### 3.1.2 - Finding angles θ1, θ2, θ3
 * θ1: For finding θ1, we project the vector going from the `base_link` to the end-effector (or `gripper_link`) onto the `XY-plane` and apply an inverse tangent operation. The following diagram shows how θ1 is derived where `θ1 = atan2(wy, wx)`.
 
-![theta1](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/theta1.png)
+![theta1](./images/theta1.png)
 
 * θ2: For finding θ2, we use law of cosines for finding angle β (color coded in red) and inverse tangent function for finding angle δ (color coded in blue). The following diagram shows how θ2 is derived where `θ2 = 90 - β - δ`.
 
@@ -197,7 +195,7 @@ and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
   `δ = atan2(cz, cx)` *(color coded in blue)*
 
-![theta2](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/theta2.png)
+![theta2](./images/theta2.png)
 
 
 * θ3: For finding θ3, we use law of cosines for finding angle γ (color coded in red) and inverse tangent function for finding angle α (color coded in blue). The following diagram shows how θ3 is derived where `θ3 = - (γ - α)`.
@@ -210,7 +208,7 @@ and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
   `α = atan2(d4, a3)` (color coded in blue)
 
-![theta3](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/theta3.png)
+![theta3](./images/theta3.png)
 
 
 ```python
@@ -248,7 +246,7 @@ We know `R0G` from the extrinsic body fixed rotations calculated earlier.
 Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 
 
-![inverse_orient](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/inverse_orient.png)
+![inverse_orient](./images/inverse_orient.png)
 
 
 ```python
@@ -291,9 +289,9 @@ The following section shows the Kuka Arm 210 grasping the object from the shelf 
 
 A demo video (<https://www.youtube.com/watch?v=1BXRThDDH1Q>) on YouTube shows the Kuka Arm in action where it is grasping an object from 6 different locations on the shelf and dropping into the bin. The video runs at 2x speed.
 
-![object_grasp](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/object_grasp.png)
+![object_grasp](./images/object_grasp.png)
 
-![object_drop](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/object_drop.png)
+![object_drop](./images/object_drop.png)
 
 
 ---
