@@ -287,9 +287,17 @@ Hence, `R36 = R03' * R0G` where the matrix R36 is shown below.
 	theta6 = theta6.evalf()
 ```
 
+## 4. Results
+The following section shows the Kuka Arm 210 grasping the object from the shelf and dropping it into the bin. The trajectory generated is followed by the Kuka Arm for the most part. There were times when the Kuka Arm does not follow the trajectory fully. This is due to the multiple solutions generated while calculating for joint angles. A demo video (<https://www.youtube.com/watch?v=1BXRThDDH1Q>) on YouTube shows the Kuka Arm in action where it is grasping an object from 6 different locations on the shelf and dropping into the bin.
+
+![object_grasp](./images/object_grasp.png)
+
+![object_drop](./images/object_drop.png)
+
+
 ---
 
-## 4. Optimizing Inverse Kinematics
+## 5. Optimizing Inverse Kinematics
 The initialization for all the homogeneous transforms are done outside of the main loop. To prevent numerical drift, only the transform from the *3rd-frame* to the ground frame is performed in every loop. The initialization function is shown below.
 
 ```python
@@ -372,7 +380,7 @@ if __name__ == "__main__":
     IK_server()
 ```
 
-## 5. Calculating Forward Kinematics error
+## 6. Calculating Forward Kinematics error
 A flag can be accepted from the user for performing error analysis on the end-effector's position calculated by using forward kinematics and the end-effector's location provided as input from the `pose`.
 
 The segment of code responsible for performing this error analysis is shown below:
