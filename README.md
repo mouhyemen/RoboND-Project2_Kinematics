@@ -6,7 +6,11 @@
 The goal of the project is to calculate the joint angles given the end-effector's pose for a 6 degree-of-freedom Kuka Arm 210 by applying principles of kinematics.
 
 ![kuka_arm](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/kuka_arm.png)
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 962c3b75855626dba053c6ad3fbbd1d9a1208f77
 ### 1.1 Objectives:
 * Calculate joint angles - θ1, θ2, θ3, θ4, θ5, θ6
 * Grasp the object from the shelf
@@ -66,7 +70,10 @@ The transform for each individual joint is shown below.
 
 
 ![joint_transforms](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/joint_transforms.png)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 962c3b75855626dba053c6ad3fbbd1d9a1208f77
 
 The equation for calculating a homogeneous transform between two reference frames and its resultant output is shown below
 
@@ -197,6 +204,11 @@ and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
   `δ = atan2(cz, cx)` *(color coded in blue)*
 
+<<<<<<< HEAD
+=======
+	`δ = atan2(cz, cx)` *(color coded in blue)*
+	
+>>>>>>> 962c3b75855626dba053c6ad3fbbd1d9a1208f77
 ![theta2](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/theta2.png)
 
 
@@ -208,8 +220,13 @@ and `r_wc = √(wx * wx + wy * wy)` *(color coded in blue)*
 
   `γ = atan2(sinγ, cosγ)` (color coded in red)
 
+<<<<<<< HEAD
   `α = atan2(d4, a3)` (color coded in blue)
 
+=======
+	`α = atan2(d4, a3)` (color coded in blue)
+	
+>>>>>>> 962c3b75855626dba053c6ad3fbbd1d9a1208f77
 ![theta3](https://github.com/mouhyemen/RoboND-Project2_Kinematics/blob/master/images/theta3.png)
 
 
