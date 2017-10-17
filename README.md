@@ -1,6 +1,5 @@
 
 # Project 2: Pick & Place Project
----
 
 
 ## 1. Project Summary
